@@ -1,5 +1,8 @@
 $(document).ready(function(){
-  $('#put-it-on').click(putOnDom);
+  $('#put-it-on').click(function(){
+    $('.output').empty();
+    putOnDom();
+  });
 });
 
 function putOnDom(){

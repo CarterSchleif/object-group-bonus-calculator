@@ -10,3 +10,33 @@ var employees = [ atticus, jem, boo, scout, robert, mayella ];
 // YOU SHOULD NOT NEED TO CHANGE ANYTHING ABOVE THIS POINT
 
 console.log(employees);
+
+
+
+function assignBonus(person){
+  var newObject = {name: person.name};
+  if(person.reviewRating <= 2){
+    newObject.bonusPercentage = 0;
+  } else if (person.reviewRating === 3){
+    newObject.bonusPercentage = 0.04;
+  } else if (person.reviewRating === 4){
+    newObject.bonusPercentage = 0.06;
+  }
+  if(person.employeeNumber.length === 4){
+    newObject.bonusPercentage += 0.05;
+  }
+  if(person.annualSalary > 65000){
+    newObject.bonusPercentage -= 0.01;
+  }
+  if(newObject.bonusPercentage > 0.13){
+    newObject.bonusPercentage = 0.13;
+  }
+  if(newObject.bonusPercentage < 0){
+    newObject.bonusPercentage = 0;
+  }
+  newObject.totalBonus = person.annualSalary * newObject.bonusPercentage;
+  newObject.totalCompensation = person.annualSalary + newObject.totalBonus;
+  return newObject;
+}
+
+console.log(assignBonus(jem));

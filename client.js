@@ -1,3 +1,24 @@
+$(document).ready(function(){
+  for(i = 0; i < employees.length; i++){ // this does one loop per employee
+    console.log(assignBonus(employees[i]));
+    // get an array of the keys of each object
+    var keys = Object.keys(employees[i]);
+    /*for(k = 0; k < keys.length; k++){
+
+    }*/
+    $('.output').append(`<p>${assignBonus(employees[i]).name}</p>`);
+    $('.output').append(`<p>${assignBonus(employees[i]).bonusPercentage}</p>`);
+    $('.output').append(`<p>${assignBonus(employees[i]).totalBonus}</p>`);
+    $('.output').append(`<p>${assignBonus(employees[i]).totalCompensation}</p>`);
+  }
+
+
+});
+
+
+
+
+
 var atticus = { name: "Atticus", employeeNumber: "2405", annualSalary: "47000", reviewRating: 3 };
 var jem = { name: "Jem", employeeNumber: "62347", annualSalary: "63500", reviewRating: 4 };
 var boo = { name: "Boo", employeeNumber: "11435", annualSalary: "54000", reviewRating: 3 };
@@ -11,7 +32,7 @@ var employees = [ atticus, jem, boo, scout, robert, mayella ];
 
 console.log(employees);
 
-
+console.log(employees[0].name);
 
 function assignBonus(person){
   var newObject = {name: person.name};
@@ -37,12 +58,10 @@ function assignBonus(person){
     newObject.bonusPercentage = 0;
   }
 
+
+
   newObject.totalBonus = Math.round(person.annualSalary * newObject.bonusPercentage);
   newObject.totalCompensation = parseInt(person.annualSalary) + newObject.totalBonus;
   newObject.bonusPercentage = newObject.bonusPercentage * 100 + '%';
   return newObject;
-}
-
-for(i = 0; i < employees.length; i++){
-  console.log(assignBonus(employees[i]));
 }

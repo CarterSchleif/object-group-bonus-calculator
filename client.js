@@ -21,6 +21,8 @@ function assignBonus(person){
     newObject.bonusPercentage = 0.04;
   } else if (person.reviewRating === 4){
     newObject.bonusPercentage = 0.06;
+  } else if (person.reviewRating === 5){
+    newObject.bonusPercentage = 0.1;
   }
   if(person.employeeNumber.length === 4){
     newObject.bonusPercentage += 0.05;
@@ -34,9 +36,13 @@ function assignBonus(person){
   if(newObject.bonusPercentage < 0){
     newObject.bonusPercentage = 0;
   }
-  newObject.totalBonus = person.annualSalary * newObject.bonusPercentage;
-  newObject.totalCompensation = person.annualSalary + newObject.totalBonus;
+
+  newObject.totalBonus = Math.round(person.annualSalary * newObject.bonusPercentage);
+  newObject.totalCompensation = parseInt(person.annualSalary) + newObject.totalBonus;
+  newObject.bonusPercentage = newObject.bonusPercentage * 100 + '%';
   return newObject;
 }
 
-console.log(assignBonus(jem));
+for(i = 0; i < employees.length; i++){
+  console.log(assignBonus(employees[i]));
+}

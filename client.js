@@ -3,15 +3,9 @@ $(document).ready(function(){
     console.log(assignBonus(employees[i]));
     // get an array of the keys of each object
     var keys = Object.keys(employees[i]);
-    /*for(k = 0; k < keys.length; k++){
-
-    }*/
-    $('.output').append(`<p>${assignBonus(employees[i]).name}</p>`);
-    $('.output').append(`<p>${assignBonus(employees[i]).bonusPercentage}</p>`);
-    $('.output').append(`<p>${assignBonus(employees[i]).totalBonus}</p>`);
-    $('.output').append(`<p>${assignBonus(employees[i]).totalCompensation}</p>`);
+    $('.output').append(`<p>Name: ${assignBonus(employees[i]).name}<br>Bonus Percentage:  ${assignBonus(employees[i]).bonusPercentage}<br>Total Bonus:  ${assignBonus(employees[i]).totalBonus}<br>Total Compensation:  ${assignBonus(employees[i]).totalCompensation}</p>`);
   }
-
+  $('.output')
 
 });
 

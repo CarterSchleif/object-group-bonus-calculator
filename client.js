@@ -1,19 +1,9 @@
 $(document).ready(function(){
   $('#put-it-on').click(function(){
     $('.output').empty();
-    putOnDom();
+    putOnDom2();
   });
 });
-
-function putOnDom(){
-  for(i = 0; i < employees.length; i++){ // this does one loop per employee
-    console.log(assignBonus(employees[i]));
-    // get an array of the keys of each object
-    var keys = Object.keys(employees[i]);
-    $('.output').append(`<p>Name: ${assignBonus(employees[i]).name}<br>Bonus Percentage:  ${assignBonus(employees[i]).bonusPercentage}<br>Total Bonus:  ${assignBonus(employees[i]).totalBonus}<br>Total Compensation:  ${assignBonus(employees[i]).totalCompensation}</p>`);
-  }
-}
-
 
 
 var atticus = { name: "Atticus", employeeNumber: "2405", annualSalary: "47000", reviewRating: 3 };
@@ -60,4 +50,24 @@ function assignBonus(person){
   newObject.bonusPercentage = newObject.bonusPercentage * 100 + '%';
   newObject.totalBonus = '$'+newObject.totalBonus;
   return newObject;
+}
+
+function putOnDom2(){
+  for(i = 0; i < employees.length; i++){ // this does one loop per employee
+    //console.log(assignBonus(employees[i]));
+    // get an array of the keys of each person object
+    var keys = Object.keys(assignBonus(employees[i]));
+    for (var k = 0; k < keys.length; k++) {
+      $('.output').append('<p>');
+      //$('.output p:last').css('border-top', '1px solid black');
+      $('.output p:last').text(keys[k] + ': ' + assignBonus(employees[i])[keys[k]]);
+    }
+    $('.output p:last').append('<br>').css({'border-bottom':'1px solid black', 'margin-bottom':'40px'});
+  }
+}
+
+function putOnDom1(){
+  for(i = 0; i < employees.length; i++){ // this does one loop per employee
+    $('.output').append(`<p>Name: ${assignBonus(employees[i]).name}<br>Bonus Percentage:  ${assignBonus(employees[i]).bonusPercentage}<br>Total Bonus:  ${assignBonus(employees[i]).totalBonus}<br>Total Compensation:  ${assignBonus(employees[i]).totalCompensation}</p>`);
+  }
 }
